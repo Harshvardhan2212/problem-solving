@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const convertVal = (str, charVal) => {
+            let val = 0;
+            for (let i = 0; i < str.length; ++i) {
+                val = val * 10 + charVal.get(str[i]);
+            }
+            return val;
+        };
+        const isSolvable = (words, result) => {
+            const charVal = new Map();
+            const chars = [];
+            for (const char of result) {
+                !charVal.has(char) && chars.push(char) && charVal.set(char, -1);
+            }
+            for (const word of words) {
+                for (const char of word) {
+                    !charVal.has(char) && chars.push(char) && charVal.set(char, -1);
+                }
+            }
+            if (charVal.size > 10) return false;
+            const usedVal = new Set();
+            return helper(0);
+
+            function helper(idx) {
+                if (idx === charVal.size) return check();
+                const char = chars[idx];
+                for (let i = 0; i <= 9; ++i) {
+                    if (usedVal.has(i) || (idx === 0 && i === 0)) continue;
+                    charVal.set(char, i);
+                    usedVal.add(i);
+                    if (helper(idx + 1)) return true;
+                    usedVal.delete(i);
+                }
+                return false;
+            }
+
+            function check() {
+                let sum = 0;
+                for (const word of words) {
+                    if (charVal[word[0]] === 0) return false;
+                    sum += convertVal(word, charVal)
+                }
+                return sum === convertVal(result, charVal);
+            }
+        };
+        words = ["SIX","SEVEN","SEVEN"], result = "TWENTY"
+        console.log(isSolvable(words, result));
+    </script>
+</body>
+
+</html>

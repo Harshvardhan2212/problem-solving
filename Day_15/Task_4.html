@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let s = "1317", k = 1896;
+         let ans = [];
+         function subs(str,i,n){
+            let temp = [];
+            temp.push(str.substr(i,n));
+            temp.push(str.substr(n));
+            ans.push(temp);
+            n--;
+            if(n== 0){
+                return
+            }
+            return subs(str,i,n);
+         }
+         subs(s,0,s.length);
+         console.log(ans);
+    </script>
+</body>
+</html>

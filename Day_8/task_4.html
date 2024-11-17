@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let str = "bccghc";
+    //    let obj = {};
+       let arr =[];
+       let ans="";
+       let cnt =0;
+       for(let i=0;i<str.length;i++){
+           // obj[str[i]] = (obj[str[i]] || 0)+1; 
+           let count =0;
+        for(let j=i;j<str.length;j++){
+            if(str[i] === str[j]){
+                count++;
+            }else{
+                break;
+            }
+        }
+        if(count%26 != 0){
+            count = count%26
+        }else{
+            count = 1;
+        }
+        arr.push(count)
+        if(ans[ans.length-3] !== str[i]){
+            console.log(arr[cnt]+64);
+            ans+=str[i]+(arr[cnt]+64)
+            cnt++;
+        }else{
+            cnt++
+        }
+       }
+       console.log(arr);
+       
+       let final=""
+       for(let i=ans.length-1;i>=0;i--){
+        final+=ans[i];
+       }
+
+       console.log(final);
+    </script>
+</body>
+</html>

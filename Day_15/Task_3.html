@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s = "1317", k = 1896
+        let num = parseInt(s);
+        let tempnum = num;
+        let i=0;
+        let ans = [];
+        while(num>0){
+            let temp = [];
+            let reminder = tempnum%(10**i);
+            num = (num-(num%10**i))/10**i;
+            temp.push(num);
+            temp.push(reminder);
+            ans.push(temp);
+            i++
+        }
+        console.log(ans);
+    </script>
+</body>
+</html>

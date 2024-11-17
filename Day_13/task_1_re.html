@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let nums = [1, 10, 3, 4, 19];
+        let ans = 0;
+        function valid(i, j, k) {
+            if (nums[i] < 0 && nums[j] < 0 && nums[k] < 0 && i < j < k) {
+                return (nums[i] - nums[j]) * nums[k];
+            } else {
+                return 0;
+            }
+        }
+        function inc(i) {
+            let j=i;
+            if(j<nums.length){
+                j++;
+                return j
+            }else{
+                return 0;
+            }
+            
+        }
+        function triplets(i) {
+
+            j = inc(i);
+            k = inc(j);
+            return [i, j, k]
+        }
+        console.log(triplets(inc(0)));
+        // if (ans < total) {
+        //     ans = total;
+        // }
+
+    </script>
+</body>
+
+</html>

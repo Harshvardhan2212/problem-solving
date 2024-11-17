@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let name = {
+            1: 'One',
+            2: 'Two',
+            3: 'Three',
+            4: 'Four',
+            5: 'Five',
+            6: 'Six',
+            7: 'Seven',
+            8: 'Eight',
+            9: 'Nine',
+            10: 'Ten',
+            11: 'Eleven',
+            12: 'Twelve',
+            13: 'Thirteen',
+            14: 'Fourteen',
+            15: 'Fifteen',
+            16: 'Sixteen',
+            17: 'Seventeen',
+            18: 'Eighteen',
+            19: 'Nineteen',
+            20: 'Twenty',
+            30: 'Thirty',
+            40: 'Forty',
+            50: 'Fifty',
+            60: 'Sixty',
+            70: 'Seventy',
+            80: 'Eighty',
+            90: 'Ninety'
+        }
+        let str = "999999999"
+        let stack = [];
+        let cur_length = stack.length;
+        function push(e) {
+            stack[cur_length] = e;
+            cur_length++;
+        }
+        console.log(str.length);
+        function pop() {
+            stack.length = cur_length - 1
+            cur_length = stack.length
+        }
+        for (let i = 0; i < str.length; i++) {
+            // console.log(name[str[str.length - i - 1]]);
+            switch (str.length - i - 1) {
+                case 8:
+                    push(name[str[str.length - i - 1]])
+                    break;
+                case 7:
+                    push(name[(str[str.length - i - 1])+'0'])
+                    break;
+                case 6:
+                    push(name[str[str.length - i - 1]]+' Hundred')
+                    break;
+                case 5:
+                    push(name[(str[str.length - i - 1])+'0'])
+                    break;
+                case 4:
+                    push(name[str[str.length - i - 1]]+' Thousand')
+                    break;
+                case 3:
+                    push(name[(str[str.length - i - 1])+'0'])
+                    break;
+                case 2:
+                    push(name[str[str.length - i - 1]]+' Lakh')
+                    break;
+                case 1: 
+                    push(name[(str[str.length - i - 1])+'0'])
+                    break;
+                case 0: 
+                     push(name[str[str.length - i - 1]]+' Crore')
+                     break;
+                case -1:
+                    push(name[(str[str.length - i - 1])+'0'])
+                    break;
+
+
+                default:
+                    break;
+            }
+        }
+        console.log(stack);
+    </script>
+</body>
+
+</html>

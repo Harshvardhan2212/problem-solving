@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            height: 300px;
+            width: 300px;
+            text-align: center;
+            padding: 10px;
+        }
+        img{
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="image.jpg" alt="">
+    </div>
+    <input type="range" min="11" max="25" value="0" id="spacing"> <span id="spacing-count">0</span><small>px</small>
+    <input type="range" min="0" max="15" value="0" id="blur"><span id="blur-count">0</span><small>px</small>
+    <input type="color" id="color">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+          $(function (){
+            $('#spacing').on('change',function (){
+                $('div').css("padding",`${$(this).val()}`);
+                $('#spacing-count').text($(this).val());
+            })
+            $('#blur').on('change',function (){
+                $('img').css("filter",`blur(${$(this).val()}px)`);
+                $('#blur-count').text($(this).val());
+
+            })
+            $('#color').on('change',function (){
+                $('div').css("background-color",$(this).val());
+
+            })
+          })
+    </script>
+</body>
+</html>

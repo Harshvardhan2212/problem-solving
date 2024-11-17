@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [[' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+        ];
+        let row;
+        let col;
+        function printArr(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                if (i === 0) {
+                    document.write(`&nbsp&nbsp` + "012")
+                    document.write(`<br/>`);
+                }
+                for (let j = 0; j < arr.length; j++) {
+                    if (j === 0) {
+                        document.write(i)
+                    }
+                    if (arr[i][j] == ' ') {
+                        document.write(`&nbsp&nbsp`);
+                    }else{
+                        document.write(arr[i][j]);
+                    }
+                }
+                document.write(`<br/>`);
+            }
+            document.write(`<br/>`);
+            return;
+        }
+        function isValid(row, col) {
+            if (row < 3 && col < 3 && arr[row][col] == ' ') {
+                return true;
+            } else {
+                console.log("enter a valid Input");
+                return false
+            }
+        }
+        function cross(i, val) {
+            let str = prompt("enter first row and then column ex:(row,col)")
+            row = parseInt(str[0]);
+            col = parseInt(str[1]);
+            if (isValid(row, col)) {
+                console.log(row, col, "X");
+                arr[row][col] = val;
+                i++;
+            }
+
+            console.log(i);
+            return i;
+        }
+        function checkState(i) {
+            let count = 0;
+            let flag = true;
+            for (let i = 0; i < 3; i++) {
+                if ((arr[i][0] == 'X' && arr[i][1] == 'X' && arr[i][2] == 'X') ||
+                    (arr[i][0] == 'O' && arr[i][1] == 'O' && arr[i][2] == 'O')) {
+                    console.log(`${arr[i][0]} is a winner`);
+                    document.write(`${arr[i][0]} is a winner`);
+                    flag = false
+                    return flag
+                }
+                if ((arr[0][i] == 'X' && arr[1][i] == 'X' && arr[2][i] == 'X') ||
+                    (arr[0][i] == 'O' && arr[1][i] == 'O' && arr[2][i] == 'O')) {
+                    console.log(`${arr[0][i]} is a winner`);
+                    document.write(`${arr[0][i]} is a winner`);
+                    flag = false
+                    return flag
+                }
+                if ((arr[0][0] == 'X' && arr[1][1] == 'X' && arr[2][2] == 'X') ||
+                    (arr[0][0] == 'O' && arr[1][1] == 'O' && arr[2][2] == 'O')) {
+                    console.log(`${arr[0][0]} is a winner`);
+                    document.write(`${arr[0][0]} is a winner`);
+                    flag = false
+                    return flag
+                }
+
+               
+            }
+            if (i>8) {
+                console.log("it's a tie");
+                flag = false;
+            }
+            return flag;
+        }
+        function tic_tak_to(i) {
+            if (i % 2 == 0) {
+                i = cross(i, "X");
+                console.log(arr);
+                printArr(arr)
+            } else {
+                i = cross(i, "O");
+                console.log(arr);
+
+                printArr(arr)
+
+            }
+            if (checkState(i)) {
+                return tic_tak_to(i);
+            } else {
+                return;
+            }
+        }
+        tic_tak_to(0);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 2px solid black;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="time"><span id="min"></span> minutes <span id="sec"></span> seconds </div>
+    <script>
+        let timeInput = prompt("enter a time");
+        let element = document.getElementById("time");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+
+        min.textContent = Math.floor(parseInt(timeInput));
+        sec.textContent = "0"
+        if (timeInput > 0 || timeInput == 0) {
+            let timeId = setInterval(() => {
+            if (min.textContent < 5) {
+                element.style.borderColor = "red"
+            }
+            if (min.textContent == 0 && sec.textContent == 0) {
+                element.style.borderColor = "green";
+                element.textContent = "time Complited"
+                clearInterval(timeId)
+            }
+            if (sec.textContent == 0) {
+                min.textContent = +(min.textContent) - 1;
+                sec.textContent = 59
+            } else {
+                sec.textContent = +(sec.textContent) - 1;
+            }
+
+        }, 10);
+
+        }else{
+            element.style.borderColor = "red"
+            element.textContent = "Invalid Input"
+
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

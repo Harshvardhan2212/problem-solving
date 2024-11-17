@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str1 = "qwertyuiop"
+        let str2 = "asdfghjkl"
+        let str3 = "zxcvbnm"
+        let ans = []
+        for (let i = 0; i < arr.length; i++) {
+            let count=0,count_1=0,count_2 =0;
+            let element = arr[i].toLowerCase();
+            for (let j = 0; j < arr[i].length; j++) {
+                for (let k = 0; k < str1.length; k++) {
+                    if(str1[k] == element[j]){
+                        count++;
+                    }                    
+                }
+                for (let k = 0; k < str2.length; k++) {
+                    if(str2[k] == element[j]){
+                        count_1++;
+                    }                    
+                }
+                for (let k = 0; k < str3.length; k++) {
+                    if(str3[k] == element[j]){
+                        count_2++;
+                    }                    
+                }                
+            }
+            if(count !== element.length && count_1 !== element.length && count_2 !== element.length){
+                ans.push(arr[i]);
+            }
+        }
+    </script>
+</body>
+</html>

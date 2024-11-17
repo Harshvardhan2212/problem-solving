@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span id="num1"></span> &nbsp; <span id="opt"></span> &nbsp; <span id="num2"></span>
+    <div>
+        <input type="text" id="input">
+        <button id="check">check</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+        let num1 = Math.floor(Math.random() * 10);
+        let num2 = Math.floor(Math.random() * 10);
+        let ans = 0;
+        let i = Math.floor(Math.random() * 10 % 3);
+        switch (i) {
+            case 0:
+                $("#opt").textContent = "+";
+                ans = num1 + num2
+                break;
+            case 1:
+                document.getElementById("opt").textContent = "-";
+                ans = num1 - num2
+                break;
+            case 2:
+                document.getElementById("opt").textContent = "*";
+                ans = num1 * num2
+                break;
+            default:
+                break;
+        }
+        
+            $("#num1").text(num1);
+
+            $("#num2").text(num2);
+
+            $("#check").on("click", function () {
+                if (ans == $("input").val()) {
+                    alert("correct")
+                } else {
+                    alert("incorrect")
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

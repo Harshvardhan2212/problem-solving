@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s = "a$b$cdefg"
+        obj = {
+            a:"a",b:'b',c:'c',d:'d',e:"e",f:'f',g:'g',h:'h',i:'i',j:'j',k:'k',l:'l',m:'m',n:'n',o:'o',p:'p',q:'q',r:'r',s:'s',t:'t',u:'u',v:'v',w:'w',x:'x',y:'y',z:'z',
+            A:1,B:2,C:2,D:2,E:2,F:2,G:2,H:2,I:2,J:2,K:2,L:2,M:2,N:2,O:2,P:2,Q:2,R:2,S:2,T:2,U:2,V:2,W:2,X:2,Y:2,Z:2
+        };
+        let obj1 = {a:'a'}
+        let str="";
+        let arr =[];
+        for (let i = 0; i < s.length; i++) {
+            if(!(obj[s[i]])){
+                str += s[i]
+            }
+            arr[i] = s[i]            
+        }   
+        console.log(str);
+        let j=str.length  
+        let ans = ""
+        for (let i = 0; i < arr.length; i++) {
+            if(!(obj[s[i]])){
+                arr[i] = str[j-1]
+                j--;
+            }
+            ans+=arr[i]
+        }  
+       console.log(ans);
+    </script>
+</body>
+</html>

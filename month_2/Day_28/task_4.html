@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        *{
+            margin: 10px;
+        }
+        div{
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            width: 70%;
+            margin: 5px;
+        }
+        input{
+            border-radius: 5px;
+            border: 1px solid green;
+            width: 70%;
+            padding: 5px;
+        }
+        button{
+            background-color: yellowgreen;
+            padding: 7px;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            width: 10%;
+        }
+        .design > div{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        span{
+            width:50px;
+            text-align: center;
+        }
+    </style>
+<body>
+    <h1>
+        Todo List
+    </h1>
+    <div>
+        <input type="text">
+        <button id="addItem">add item</button>
+    </div>
+    <br>
+    <div id="default">
+        <span></span>
+        <button id="check">check</button>
+        <button id="edit">edit</button>
+        <button id="delete">delete</button>
+    </div>
+
+    <div id="container" class="design">
+
+    </div>
+    <br>
+    <button id="clear-all">clear all</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        let count = 0;
+        $(function () {
+            $('#default').css('display','none');
+            $("#addItem").on('click', function () {
+                
+                if($('input').val().trim() == ''){
+                    return;
+                }
+                let newNode = $('#default').clone();
+                newNode.css('display','block');
+                newNode.attr('id', count);
+                count++;
+                newNode.children("span").text($("input").val());
+                newNode.children("#check").on('click', function () {
+                    $(this).parent().children("span").css('text-decoration', 'line-through');
+                    $(this).parent().children("#delete").remove();
+                    $(this).parent().children("#edit").remove();
+                    $(this).parent().children("#check").remove();
+                });
+                newNode.children("#edit").on('click', function () {
+                    let str = $(this).parent().children("span").text();
+                    $(this).parent().children("span").replaceWith('<input type="text">');
+                    $(this).parent().children("input").val(str);
+                    $(this).parent().children("button").css('display', 'none');
+                    $(this).parent().append($('<button/>').attr("id", "save").text('save'));
+                    
+                    $("#save").on('click',function (){
+                        $(this).parent().children("button").css('display','inline');
+                        $(this).parent().prepend($('<span/>').text($(this).parent().children("input").val()));
+                        $(this).parent().children("input").remove();
+                        $(this).remove();
+                    });
+                });
+                newNode.children("#delete").on('click', function () {
+                    $(this).parent().remove();
+                });
+                $("#container").append(newNode);
+                $("input").val("");
+            });
+            $('#clear-all').on('click',function () {
+                $('#container').empty();
+            });
+        });
+        
+    </script>
+</body>
+
+</html>

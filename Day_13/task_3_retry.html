@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let matrix = [
+            [2, 3, 1],
+            [5, 4, 7],
+            [6, 9, 8]
+        ]
+        let ans = []
+        let path = []
+        let len = 0
+
+        function findAWay(i, j, path, len) {
+            len = len+1
+            if(i>matrix.length-1 || j>matrix[0].length-1){
+                return 0
+            }
+            if (len > (matrix.length + matrix[0].length-1)) {
+                return 0;
+            }
+            path.push(matrix[i][j])
+            if (i === matrix.length-1 && j === matrix[0].length-1) {
+                console.log(len,path);
+                ans.push(path);
+                return 0;
+            }
+            if (i == matrix.length - 1 && j < matrix[0].length) {
+                findAWay(i, j + 1, path, len);
+            }
+            if (j == matrix[0].length - 1 && i < matrix.length) {
+                findAWay(i + 1, j, path, len);
+            }
+            findAWay(i + 1, j, path,len)
+            findAWay(i, j + 1, path,len)
+        }
+        findAWay(0, 0, path, len);
+        console.log(ans);
+    </script>
+</body>
+
+</html>

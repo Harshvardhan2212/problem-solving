@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function printPath(path) {
+            for (let i = 0; i < path.length; i++) {
+                // process.stdout.write(path[i] + ", ");
+                // console.log(path[i]);
+            }
+            // console.log();
+        }
+
+        // Function to find all possible paths in a matrix from the top-left cell to the bottom-right cell
+        function findPaths(arr, path, i, j) {
+            // If the bottom-right cell is reached, print the path
+            if (i === M - 1 && j === N - 1) {
+                console.log("1",i,j,arr[i][j]);
+                path.push(arr[i][j]);
+                printPath(path);
+                let e = path.pop();
+                console.log("poped element",e);
+                return;
+            }
+
+            // Boundary cases: Check if we are out of the matrix
+            if (i < 0 || i >= M || j < 0 || j >= N) {
+                return;
+            }
+            console.log("cur cell",i,j,arr[i][j]);
+            // Include the current cell in the path
+            path.push(arr[i][j]);
+
+            // Move right in the matrix
+            if (j + 1 < N) {
+                findPaths(arr, path, i, j + 1);
+            }
+
+            // Move down in the matrix
+            if (i + 1 < M) {
+                findPaths(arr, path, i + 1, j);
+            }
+
+            // Backtrack: Remove the current cell from the current path
+            let e = path.pop();
+            console.log("poped element out",e);
+        }
+
+        // Driver code
+        // Input matrix
+        const arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+        // To store the path
+        const path = [];
+
+        // Starting cell (0, 0)
+        let i = 0, j = 0;
+
+        const M = arr.length;
+        const N = arr[0].length;
+
+        // Function call
+        findPaths(arr, path, i, j);
+    </script>
+</body>
+
+</html>

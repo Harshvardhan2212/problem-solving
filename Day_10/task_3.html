@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let dir = {
+            U:[1,0],
+            D:[-1,0],
+            R:[0,1],
+            L:[0,-1]
+        }
+        
+        let moves = "UUUDDDLLRR";
+        let pos = [0,0];
+        for (let i = 0; i < moves.length; i++) {
+            pos[0] += dir[moves[i]][0];
+            pos[1] += dir[moves[i]][1];            
+        }
+        if(pos[0]+pos[1] === 0){
+            // return true;
+            console.log('TRUE');
+        }else{
+            // return false;
+            console.log('FALSE');
+        }
+    </script>
+</body>
+</html>

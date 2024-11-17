@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let baskets = [
+                        {orange : 5, apple : 50, banana : 50},
+                        {orange : 5, apple : 50},
+                        {orange : 5, banana : 50},
+                        {apple : 50, banana : 50}
+                    ]
+    function findMaximumFruit(baskets) {
+        let count = {};    
+        let max = 0;
+        let ans = {};
+        for(let i in baskets){
+            for(let key in baskets[i]){
+                //for total number of fruits in whole array
+                count[key] = (count[key] || 0) + baskets[i][key];
+                //for finding max
+                if(max === count[key]){
+                    ans[key] = count[key]
+                }
+                if(max<count[key]){
+                    max = count[key];
+                    ans = {}
+                    ans[key] = count[key]
+                }
+            }
+        }
+        return [ans];
+    }
+    console.log(findMaximumFruit(baskets));  
+
+    
+    </script>
+</body>
+</html>

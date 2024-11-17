@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let matrix = [["1", "0", "1", "0", "0"],
+        ["1", "0", "1", "1", "1"],
+        ["1", "1", "1", "1", "1"],
+        ["1", "0", "0", "1", "0"]];
+        rows = matrix.length;
+        cols = matrix[0].length;
+        function calculate(arr) {
+            let stack = [];
+            for (let i = 0; i < arr.length; i++) {
+                if(arr[i] != 0){
+                    stack.push(arr[i])
+                }else{
+                    stack = [];
+                }                
+            }
+             min = stack[0]
+            for (let i = 0; i < stack.length; i++) {
+                if(min>stack[i]){
+                    min = stack[i];
+                }
+            }
+            return min*stack.length;
+        }
+        let maxArea = 0;
+        let arr = [0, 0, 0, 0, 0];
+        count = 0;
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                if (matrix[i][j] == "1") {
+                    arr[j] += 1;
+                } else {
+                    arr[j] = 0
+                }
+            }
+            maxArea = Math.max(maxArea,calculate(arr))
+        }
+
+        console.log(maxArea);
+    </script>
+</body>
+
+</html>

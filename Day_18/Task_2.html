@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [];
+        let n = 5
+        let count = n * n;
+        let i = 0, j = 0;
+        let flag = true;
+        for (let i = 0; i < n; i++) {
+            arr.push([])
+        }
+        let str = 'RDLU';
+        let command = "";
+        let m = 4;
+        for (let i = 1; i < n; i++) {
+            let j  = 0;
+            while (j<m) {
+                let temp = str[j].repeat(n - i);
+                command += temp;
+                j++
+            }
+        }
+        console.log(command);
+
+
+        function spiral(count, i, j, key) {
+            if (count == 0) {
+                return;
+            }
+            arr[i][j] = count;
+            count--;
+            switch (command[key]) {
+                case 'R':
+                    spiral(count, i, j + 1, key + 1);
+                    break;
+
+                case 'D':
+                    spiral(count, i + 1, j, key + 1);
+                    break;
+
+                case 'L':
+                    spiral(count, i, j - 1, key + 1);
+                    break;
+
+                case 'U':
+                    spiral(count, i - 1, j, key + 1);
+                    break;
+            }
+            manageKey(key, i, j);
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

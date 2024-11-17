@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        arr = [1,2,3];
+        let ans = []
+        const swap = (arr,i,j) =>{
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp ;
+        }
+        const permute = (arr,st,ans) =>{
+            if(st == arr.length){
+                ans.push(arr.join(""));
+            }
+            for (let i = st; i < arr.length; i++) {
+                swap(arr,st,i);
+                permute(arr,st+1,ans);
+                swap(arr,st,i);
+            }
+        }
+        permute(arr,0,ans);
+        ans.sort();
+        let i = 0
+        for (; i < ans.length; i++) {
+            if(ans[i] === arr.join("")){
+                break
+            }            
+        }
+        return ans[i+1].split("")
+    </script> 
+</body>
+</html>

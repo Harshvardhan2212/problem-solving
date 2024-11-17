@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let matrix = [
+            [2, 3, 1, 2],
+            [5, 1, 7, 4],
+            [6, 2, 1, 6]
+        ]
+        let flag = true;
+        let i = 0;
+        let j = 0;
+        let path = [matrix[0][0]]
+        function maximum(arr){
+            let sum =0 
+            for(let i=0;i<arr.length;i++){
+                sum+=arr[i];
+            }
+            return sum;
+        }
+        function findPath(i, j, path) {
+            if (i == matrix.length - 1) {
+                j = j + 1;
+                path.push(matrix[i][j]);
+            } else if (j == matrix[0].length - 1) {
+                i = i + 1;
+                path.push(matrix[i][j])
+            } else {
+                if (matrix[i][j + 1] > matrix[i + 1][j]) {
+                    path.push(matrix[i + 1][j]);
+                    i = i + 1;
+                }
+                else if(matrix[i][j + 1] == matrix[i + 1][j]){
+                    path.push(matrix[i][j + 1])
+                    let arr = findPath(i,j+1,[])
+                    let arr2 = findPath(i+1,j,[])
+                    return (maximum(arr)<maximum(arr2))?[...path,...arr]:[...path,...arr2]
+                } 
+                else {
+                    path.push(matrix[i][j + 1]);
+                    j = j + 1;
+                }
+            }
+
+            if (i == matrix.length - 1 && j == matrix[0].length - 1) {
+                return path;
+            } else {
+                return findPath(i, j, path)
+            }
+        }
+        console.log(findPath(i, j, path));
+    </script>
+</body>
+
+</html>

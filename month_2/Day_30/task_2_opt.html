@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="country">
+
+    </select>
+    <select name="" id="state" disabled></select>
+    <select name="" id="city" disabled></select>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#country').append($('<option>').text('select'));
+
+            function fetching($data, $id, val) {
+                let data = $.ajax({
+                    type: 'post',
+                    data: $data,
+                    url: `https://testapi.demoserver.biz/api/settings/${$id}`,
+                    success: function (resultData) {
+                        resultData.data[val].forEach(element => {
+                            $(`#${$id}`).append($('<option>').val(element).text(element));
+                        });
+                    }
+                })
+            }
+            fetching({}, 'country', 'countries')
+            $('#country').on('change', function () {
+                $('#state').prop("disabled", false);
+                $('#city').prop("disabled", true);
+                $('#state').empty();
+                $('#state').append($('<option>').text('select'));
+                $('#city').empty();
+                $('#city').append($('<option>').text('select'));
+                if ($(this).val() != 'select') {
+                    fetching({
+                        country: $(this).val()
+                    }, 'state', 'states')
+                } else {
+                    $('#state').prop("disabled", true);
+                }
+
+            })
+            $('#state').on('change', function () {
+                $('#city').prop("disabled", false);
+                $('#city').empty();
+                $('#city').append($('<option>').text('select'));
+                if ($(this).val() != 'select') {
+                    fetching({
+                        country: $('#country').val(),
+                        state: $(this).val()
+                    }, 'city', 'cities')
+                } else {
+                    $('#city').prop("disabled", true);
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html> 

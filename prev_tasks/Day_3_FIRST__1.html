@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function max(x,y,z){
+            return (x>y)? x:y;
+        }
+        let array1 = [[111,3222,33],[4,50,333],[2,152,444]];
+        let final_array = [];
+        let min_array = [];
+        for(let i=0;i<array1.length;i++){
+
+            let max = array1[i][0]; 
+            let min = array1[0][i];
+            
+            for(let j=0;j<array1.length;j++){
+                
+
+                //for finding maximum
+                if(max > array1[i][j]){
+                    final_array[i] = max
+                }else{
+                    final_array[i] = array1[i][j]
+                    max = array1[i][j]
+
+                }
+                //for finding minimum
+                if(min < array1[j][i]){
+                    min_array[i] = min
+
+
+                }else{
+                    min_array[i] = array1[j][i]
+                    min = array1[j][i]
+                }             
+            }
+
+        }
+        // let output =[];
+        // output.push(final_array);
+        // output.push(min_array);
+
+        console.log(final_array,min_array);
+        // console.log(min_array);
+        // console.log(output);
+        
+    </script>
+</body>
+</html>

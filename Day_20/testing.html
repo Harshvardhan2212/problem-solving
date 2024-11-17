@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        obj = { 0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false }
+        let words = ["SIX", "SEVEN", "SEVEN"], result = "TWENTY"
+        let objVal = {};
+
+        function Itarate(val) {
+            for (let i = 0; i < val.length; i++) {
+                objVal[val[i]] = -1;
+            }
+        }
+        function makeNumber(word, objVal) {
+            let num = "";
+            for (let i = 0; i < word.length; i++) {
+                num += objVal[word[i]]
+            }
+            return +(num)
+        }
+        for (let val of words) {
+            Itarate(val);
+        }
+        Itarate(result);
+        let str = ""
+        flag = false;
+        for (let key in objVal) {
+            str += key;
+        }
+
+        function crossCheck(objVal) {
+            total = 0;
+            for (let val of words) {
+                total += makeNumber(val, objVal)
+            }
+            if (total == makeNumber(result, objVal)) {
+                flag = true;
+            }
+        }
+        if (str.length > 9) {
+            console.log(false);
+        } else {
+            function permute(str, obj, st, objVal) {
+                if (st == str.length) {
+                    crossCheck(objVal);
+                    if (flag) {
+                        return
+                    }
+                }
+                else {
+                    for (let i = 0; i < 10; i++) {
+                        if (!obj[i]) {
+                            objVal[str[st]] = i;
+                            obj[i] = true;
+                            permute(str, obj, st + 1, objVal);
+                            obj[i] = false
+                        }
+                    }
+                }
+                if (flag) {
+                    return
+                }
+            }
+        }
+
+
+        permute(str, obj, 0, objVal);
+        console.log(flag);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let dungeon = [[-2,-3,3],[1,-10,1],[10,30,-5]] 
+        let health = dungeon[0][0];
+        let flag = true
+        let count = 0
+        let i=0;
+        let j=0;
+        while(flag){
+            if(j === dungeon[0].length-1){
+                i = i+1
+                health += dungeon[i][j]
+            }
+            if(i === dungeon.length-1){
+                j = j+1;
+                health += dungeon[i][j]
+            }
+            if(dungeon[i][j+1]>dungeon[i+1][j]){
+                console.log(i,j);
+                j = j+1;
+                health += dungeon[i][j]
+            }else{
+                console.log(i,j);
+                i = i+1
+                health += dungeon[i][j]
+            }
+            if(i == dungeon.length-1 && j == dungeon[0].length-1){
+                flag = false
+            }
+        }
+        if(health<0 || health == 0){
+            health = (-1)*health+1;
+        }
+        console.log(health);
+    </script>
+</body>
+</html>

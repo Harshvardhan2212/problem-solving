@@ -1,0 +1,44 @@
+f
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let matrix = [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]];
+        function isRectangle(i_s, i_e, j_s, j_e) {
+            let flag = true;
+            let total = 0;
+            for (let i = i_s; i < i_e; i++) {
+                for (let j = j_s; j < j_e; j++) {
+                    if (matrix[i][j] == 0) {
+                        return 0;
+                    }
+                    total += parseInt(matrix[i][j]);
+                }
+            }
+            
+            return total;
+        }
+        let total = 0;
+            for (let i = 0; i < matrix.length; i++) {
+                for (let j = 0; j < matrix.length; j++) {
+                    for (let k = i; k < matrix.length; k++) {
+                        for (let l = j; l < matrix[0].length; l++) {
+                            if(isRectangle(i,j,k,l) != 0 && isRectangle(i,j,k,l)>total){
+                                total = isRectangle(i,j,k,l);
+                            }
+                        }
+                    }
+                }
+            }
+        console.log(total);        
+    </script>
+</body>
+
+</html>

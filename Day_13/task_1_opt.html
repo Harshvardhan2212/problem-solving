@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opt</title>
+</head>
+<body>
+    <script>
+         let nums = [1,10,3,4,19];
+         let max = Number.MIN_VALUE;
+         let min = nums[0];
+         let max_2 = Number.MIN_VALUE;
+         let temp = 0
+         for (let i = 0; i < nums.length; i++) {
+            if(max<nums[i]){
+                temp = i
+                max = nums[i];
+            }
+            if(min>nums[i]){
+                min = nums[i]
+            }            
+         }
+         nums[temp] = Number.MIN_VALUE;
+         for (let j = 0; j < nums.length; j++) {
+            if(max_2<nums[j]){
+                max_2 = nums[j]
+            }
+         }
+         console.log(max,min,max_2);
+         if (max < 0 && min < 0 && max_2 < 0) {
+            console.log(0);
+        } else {
+            console.log((max_2-min)*max);
+        }
+    </script>
+</body>
+</html>

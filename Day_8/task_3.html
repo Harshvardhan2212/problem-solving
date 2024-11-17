@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str= "ok       sky";
+        let ans ="";
+        for (let i = 0; i < str.length; i++) {
+            let substr="";
+            let flag = false
+            for(let j=i;j<str.length;j++){
+                if(str[j] !== " "){
+                   console.log(i,j,str[j]); 
+                    substr+=str[j];
+                }else{
+                    i=j;
+                    break;
+                }
+                if(j === str.length-1){
+                    console.log(j);
+                    flag =true
+                }
+            }
+            
+            for(let j=0;j<substr.length;j++){
+                ans += substr[substr.length-j-1];
+            }
+            if(flag){
+                break
+            }else{
+                if(ans[ans.length-1] !== " "){
+                    ans+=" ";
+                }
+            }            
+        }
+        console.log(ans);
+    </script>
+</body>
+</html>

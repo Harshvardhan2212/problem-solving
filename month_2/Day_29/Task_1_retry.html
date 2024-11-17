@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Full Name : </label>
+        <input type="text">
+        <br>
+        <label for="">Email : </label>
+        <input type="text">
+        <br>
+        <label for="">Mobile No : </label>
+        <input type="text">
+    </form>
+
+    <div>
+        <span>Item Details</span>
+        <button id="add-item">add</button>
+    </div>
+    <div id="default">
+        <select name="" id="opt">
+            <option value="0" style="display: none;">select</option>
+            <option value="2">car</option>
+            <option value="1">bike</option>
+            <option value="5">boat</option>
+            <option value="3">cat</option>
+        </select>
+        Amount :
+        <span id="price">0</span>
+        Quantity :
+        <button id="dec"> - </button>
+        <span id="count">0</span>
+        <button id="inc"> + </button>
+        <button id="del">delete</button>
+    </div>
+    <div id="cart">
+
+    </div>
+    <div>The Total Amount is <span id="total">0</span></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</body>
+
+</html>

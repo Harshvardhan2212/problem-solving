@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let str = 'SEND';
+        // let str1 = 'MORE';
+        // let str3 = 'MONEY';
+        // for (let i = 0; i < 5; i++) {
+        //     // console.log(str.charCodeAt(i),str[i]);
+        //     // console.log(str1.charCodeAt(i),str1[i]);            
+        //     console.log(str3.charCodeAt(i),str3[i]);            
+        // }
+        function divideString(str) {
+            const result = [];
+
+            function backtrack(start, parts) {
+                
+                if (start === str.length) {
+                    result.push(parts.join(','));
+                    return;
+                }
+
+                for (let i = start; i < str.length; i++) {
+                    const substring = str.substring(start, i + 1);
+                    parts.push(substring);
+                    backtrack(i + 1, parts);
+                    parts.pop();
+                }
+            }
+
+            backtrack(0, []);
+
+            return result;
+        }
+
+        const inputString = "1331";
+        const combinations = divideString(inputString);
+        console.log(combinations);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queens Problem</title>
+</head>
+
+<body>
+    <script>
+        let arr = [3, 1, 4, 1];
+        let pos = [];
+        let ans = [];
+        let final = [];
+        for (let i = 0; i < arr.length; i++) {
+            let temp = [];
+            temp.push(i);
+            temp.push(arr[i]-1);
+            ans.push(temp);
+        }
+        console.log(ans);
+        for (let i = 0; i < arr.length; i++) {
+            let temp = []
+            for (let j = 0; j < arr.length; j++) {
+                if (j === (arr[i]-1)) {
+                    temp.push(1);
+                } else {
+                    temp.push(0);
+                }
+            }
+            pos.push(temp);
+        }
+        console.log(pos);
+        for (let i = 0; i < array.length; i++) {
+            console.log(ans[i]);            
+        }
+        // for (let i = 0; i < arr.length; i++) {
+        //     let temp;
+        //     for (let j = 0; j < arr.length; j++) {
+        //         if(i==j){
+        //             continue;
+        //         }
+        //         if(ans[i][1] === ans[j][1]){
+
+        //             temp.push(ans[i]);
+        //             temp.push(ans[j]);
+        //             final.push(temp);
+        //         }else if(ans[i][0] === ans[j][0]){
+        //             temp.push(ans[i]);
+        //             temp.push(ans[j]);
+        //             final.push(temp);
+        //         }
+        //     }
+        // }
+        console.log(final);
+    </script>
+</body>
+
+</html>

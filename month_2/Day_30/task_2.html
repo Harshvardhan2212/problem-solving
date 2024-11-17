@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="country">
+       
+    </select>
+    <select name="" id="state" disabled></select>
+    <select name="" id="city" disabled></select>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#country').append($('<option>').text('select'));
+        
+            let data = $.ajax({
+                type: 'post',
+                data: {},
+                url: 'https://testapi.demoserver.biz/api/settings/country',
+                success: function (resultData) {
+                    resultData.data.countries.forEach(element => {
+                        $('#country').append($('<option>').val(element).text(element))
+                    });
+
+                }
+            })
+            $('#country').on('change', function () {
+                $('#state').prop("disabled",false);
+                $('#city').prop("disabled",true);
+                $('#state').empty();
+                $('#state').append($('<option>').text('select'));
+                $('#city').empty();
+                $('#city').append("<option>select</option>");
+                let data = $.ajax({
+                    type: 'post',
+                    data: {
+                        "country":$(this).val()
+                    },
+                    url: 'https://testapi.demoserver.biz/api/settings/state',
+                    success: function (resultData) {
+                        resultData.data.states.forEach(element => {
+                            $('#state').append($('<option>').val(element).text(element))
+                        });
+                    }
+                })
+            })
+            $('#state').on('change', function () {
+                $('#city').prop("disabled",false);
+                $('#city').empty();
+                $('#city').append("<option>select</option>");
+                let data = $.ajax({
+                    type: 'post',
+                    data: {
+                        "country":$('#country').val(),
+                        "state":$(this).val()
+                    },
+                    url: 'https://testapi.demoserver.biz/api/settings/city',
+                    success: function (resultData) {
+                        console.log("resultData.data.countries", resultData.data);
+
+                        resultData.data.cities.forEach(element => {
+                            $('#city').append($('<option>').val(element).text(element))
+                        });
+
+                    }
+                })
+            })
+        })
+    </script>
+
+</body>
+
+</html>

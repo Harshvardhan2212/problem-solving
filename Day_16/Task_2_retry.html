@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [7, 8, 9, 2];
+        function getMaxtime(arr) {
+
+            /**
+             * if valid format found then return 
+             * return 23:45
+             */
+
+
+            /**
+            * if valid format not found then return 
+            * return "No valid time can be formed from the given digits"
+            */
+            let max = 0;
+            let temp;
+            let flag = false;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] <= 2) {
+                    flag = true;
+                }
+                if (max < arr[i] && arr[i] <= 2) {
+                    max = arr[i];
+                    temp = i;
+                }
+            }
+            arr[temp] = -1
+            let sec = 0;
+            if (!flag) {
+                return "No valid time can be formed from the given digits"
+            }
+            for (let i = 0; i < arr.length; i++) {
+                if ((max * 10 + sec) < (max * 10 + arr[i]) && (max * 10 + arr[i]) < 24) {
+                    sec = arr[i];
+                    temp = i;
+                }
+            }
+            arr[temp] = -1
+            let min = 0;
+            let min_2 = 0;
+            flag = false
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < 6) {
+                    flag = true;
+                }
+                if (min < arr[i] && arr[i] < 6) {
+                    min = arr[i];
+                    temp = i;
+                }
+            }
+            if (!flag) {
+                return "No valid time can be formed from the given digits"
+            }
+            arr[temp] = -1
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] != -1) {
+                    min_2 = arr[i]
+                }
+            }
+            if(max<0 || sec<0 || min<0 || min_2<0){
+                return "No valid time can be formed from the given digits"
+            }
+            let str = `${max}` + `${sec}` + `:` + `${min}` + `${min_2}`
+            return str
+        }
+        console.log(getMaxtime(arr));
+    </script>
+</body>
+
+</html>

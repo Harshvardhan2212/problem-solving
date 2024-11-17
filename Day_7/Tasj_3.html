@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = "sadbutsad";
+        let substring = "sad";
+        let ans = [];
+        let map = {};
+
+        function checkfun(str, substring) {
+            for (let i = 0; i < (str.length - substring.length); i++) {
+                for (let j = 0; j < substring.length; j++) {
+                    if(str[i+j] = substring[j]){
+                        if(!map[i+j]){
+                            ans.push(i+j);
+                        }
+                        map[i+j] = true
+                        console.log(i,j);
+                    }
+                }
+            }
+            return ans
+        }
+        // str = str.replaceAll(substring,"")
+        // str.trim();
+        console.log(checkfun(str, substring));
+    </script>
+</body>
+
+</html>

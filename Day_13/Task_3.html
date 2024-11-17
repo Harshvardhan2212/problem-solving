@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let matrix = [
+            [2, 3, 1],
+            [5, 4, 7],
+            [6, 9, 8]
+        ]
+        let flag = true;
+        let i = 0;
+        let j = 0;
+        let path = [matrix[0][0]]
+        while (flag) {
+            if (i == matrix.length - 1) {
+                j = j + 1;
+                path.push(matrix[i][j]);
+            } else if (j == matrix.length - 1) {
+                i = i + 1;
+                path.push(matrix[i][j])
+            } else {
+                if (matrix[i][j + 1] > matrix[i + 1][j]) {
+                    path.push(matrix[i + 1][j]);
+                    i = i + 1;
+                } else {
+                    path.push(matrix[i][j + 1]);
+                    j = j + 1;
+                }
+            }
+
+            if (i == matrix.length - 1 && j == matrix[0].length - 1) {
+                flag = false
+            }
+        }
+        console.log(path);
+    </script>
+</body>
+
+</html>

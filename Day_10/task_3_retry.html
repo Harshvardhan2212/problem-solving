@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     let moves = "UUUDDDLLRR";
+     let obj = {};
+        for(let i=0;i<moves.length;i++){
+            obj[moves[i]] = (obj[moves[i]] || 0) +1; 
+        }
+    console.log((obj[U] === obj[D] && obj[L] === obj[R])?true:false);
+    </script>
+</body>
+</html>

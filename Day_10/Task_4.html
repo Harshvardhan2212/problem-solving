@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = 2;
+        let b = [3];
+        let str ="";
+    //     for (let i = 0; i < b.length; i++) {
+    //        str+=b[i];
+    //     }
+    //   console.log((a**parseInt(str))%1337);
+
+    function concatearr(b,str){
+            if(str.length == b.length){
+                return str;
+            }else{
+                str+=b[str.length];
+                return concatearr(b,str);
+            }
+    }
+    let num = parseInt(concatearr(b,str))
+    let count =0,mul=1;
+      function power_of(a,num){
+           if(count>=num){
+            return mul;
+           }
+           mul *= a;
+           count++;
+           return power_of(a,num);
+      }
+      console.log(power_of(a,num)%1337);
+    </script>
+</body>
+</html>

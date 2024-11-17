@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("enter a number"));
+        for(let i=1;i<=(n*n);i++){
+            
+           if(i%n==0){
+            document.write("*");
+            document.write(`<br/>`);
+            
+           }
+           else if(i%n !== 0 && i%n !== 1 && i>n && i<(n*(n-1))){
+            document.write(`${i}`);
+           }
+           else{
+            document.write("*");
+           }
+        }
+    </script>
+</body>
+</html>

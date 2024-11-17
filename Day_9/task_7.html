@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen's Problem</title>
+</head>
+
+<body>
+    <script>
+        let arr = [3, 1, 4, 2];
+        let ans = [];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i+1; j < arr.length; j++) {
+               let q1 = {x:i+1,y:arr[i]};
+               let q2 = {x:j+1,y:arr[j]};
+               console.log(q2);
+               if(q1.y == q2.y){
+                ans.push(q2);
+               }            
+               if(Math.abs(q1.y-q1.x) === Math.abs(q2.y-q2.x)){
+                ans.push(q2);
+               }
+            }
+        }
+        console.log(ans);
+    </script>
+</body>
+
+</html>

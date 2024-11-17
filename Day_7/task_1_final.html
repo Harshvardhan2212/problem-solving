@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str1 = "abbaca";
+        let visited= {};
+        let ans = "";
+        function test(str1,ans,visited){
+          for(let i=0;i<str1.length;i++){
+            if(str1[i] === str1[i+1]){
+                if(visited[str1[i]]){
+                    continue;
+                }
+                visited[str1[i]] = true;
+                ans = ans+str1[i];
+                str1 = str1.substring(0,i)+str1.substring(i+2);
+                return test(str1,ans,visited) 
+                break               
+            }
+        } 
+        if(!ans){
+            return true
+        }
+        return ans;
+        }
+        console.log(test(str1,ans,visited));
+    </script>
+</body>
+</html>

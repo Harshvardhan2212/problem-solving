@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun(n,i=1) {
+            if(i == n+1){
+                return
+            }
+            console.log(i);
+            fun(n,i+1);
+            if(i != n){
+
+                console.log(i);
+            }
+        }
+        fun(5)
+    </script>
+</body>
+
+</html>

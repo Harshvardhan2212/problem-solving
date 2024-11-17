@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ["elephant", "CAT", "@za&", "BEAR"];
+        let str = arr.join("").toLocaleLowerCase();
+        const alphabetObject = {
+        "a": 1,
+        "b": 10,
+        "c": 2,
+        "d": 4,
+        "e": 100,
+        "f": 5,
+        "g": 3,
+        "h": 7,
+        "i": 1,
+        "j": 50,
+        "k": 20,
+        "l": 30,
+        "m": 15,
+        "n": 6,
+        "o": 8,
+        "p": 12,
+        "q": 25,
+        "r": 9,
+        "s": 40,
+        "t": 35,
+        "u": 45,
+        "v": 60,
+        "w": 70,
+        "x": 55,
+        "y": 80,
+        "z": 90
+    };
+    let sum =0 ;
+        for(let i=0;i<str.length;i++){
+            if(!(alphabetObject.hasOwnProperty(str[i]))){
+                alphabetObject[str[i]] = 0;
+            }
+            console.log(str[i],alphabetObject[str[i]]);
+            sum = sum + alphabetObject[str[i]];
+        }
+        console.log(sum);
+    </script>
+</body>
+</html>

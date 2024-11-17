@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        n = 5, i = 1, j = 10
+        function mul(n, i, j, ans) {
+            if (i === j + 1) {
+                return ans;
+            } else {
+                ans.push(n * i);
+                return mul(n, i + 1, j, ans);
+            }
+        }
+        function mul_table(n, i, j) {
+            let ans = [];
+            return mul(n, i, j, ans)
+        }
+        console.log(mul_table(n,i,j));
+    </script>
+</body>
+
+</html>

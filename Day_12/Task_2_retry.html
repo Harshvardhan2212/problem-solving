@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let prices = [-2, -1, -3, -5, -4]
+        let fees = 2;
+
+        let total = 0
+        function profit(prices) {
+            let buy = prices[0];
+            let sell;
+            let maxprof = 0;
+
+            for (let i = 1; i < prices.length; i++) {
+                if (prices[i] < buy) {
+                    buy = prices[i];
+                }
+                if ((prices[i] - buy) > maxprof) {
+                    sell = prices[i];
+                    maxprof = prices[i] - buy
+                }
+            }
+            return maxprof;
+        }
+        if (profit(prices) < fees) {
+            total = 0;
+        } else {
+            total = profit(prices) - fees;
+        }
+        console.log(total);
+        let len = 2;
+        for (let i = 0; i < prices.length - 3; i++) {
+            let sub1 = [];
+            let sub2 = [];
+            for (let j = 0; j < len; j++) {
+                sub1.push(prices[j]);
+            }
+            for (let k = len; k < prices.length; k++) {
+                sub2.push(prices[k]);
+            }
+            let cur_total = profit(sub1) - fees + profit(sub2) - fees;
+            if (cur_total > total) {
+                total = cur_total;
+            }
+            len++;
+        }
+        console.log(total);
+    </script>
+</body>
+
+</html>

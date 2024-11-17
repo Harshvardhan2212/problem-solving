@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = "11010100000001111111111111111111111111111"
+        let b = "100111111111111111111"
+        let ans1 = "11010100000010000000100111111111111111110"
+        let a_num = parseInt(a);
+        let b_num = parseInt(b);
+        function toDecimal(a){
+            let temp;
+            let num =0;
+            for(let i=0;i<a.length;i++){
+                temp = (2**i)*(+a[a.length-i-1])
+                num = num+temp;
+            }
+            return num;
+        }
+        function toBinary(ans){
+            if(ans == 0 ){
+                return "0";
+            }
+            let final="";
+            while(ans>=1){
+                
+                if(ans%2==1){
+                    final +="1"; 
+                    ans = (ans-1)/2;
+                }else{
+                    final +="0"; 
+                    ans = ans/2;
+                }
+            }
+            let re_final="";
+            for(let i=0;i<final.length;i++){
+                re_final += final[final.length-i-1]
+            }
+            return re_final;
+        }
+        console.log((toBinary(toDecimal(a)+toDecimal(b)))===ans1); 
+    </script>
+</body>
+</html>

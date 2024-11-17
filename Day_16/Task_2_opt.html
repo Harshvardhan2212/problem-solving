@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [7, 8, 9, 2];
+        function getMaxtime(arr) {
+            let temp;
+            function hour(i,temp) {
+                let max = -1;
+                let flag = false;
+                if (arr[i] <= 2) {
+                    flag = true;
+                }
+                if (max < arr[i] && arr[i] <= 2) {
+                    max = arr[i];
+                    temp = i;
+                }
+                if(i<arr.length){
+                    return hour(i+1,temp);
+                }else{
+                    arr[temp] = -1
+                    return max;
+                }
+            }
+            let max = hour(0,temp);
+            function unit_hour(i,max,temp){
+                let sec = -1;
+                if ((max * 10 + sec) < (max * 10 + arr[i]) && (max * 10 + arr[i]) < 24) {
+                    sec = arr[i];
+                    temp = i;
+                }
+                if(i<arr.length){
+                    return unit_hour(i+1,max,temp);
+                }else{
+                    arr[temp] = -1
+                    return max;
+                }
+            }
+            let unitHour = unit_hour(0,max);
+            
+            function min_digit(i,temp) {
+                let min = -1;
+                if (min < arr[i] && arr[i] < 6) {
+                    min = arr[i];
+                    temp = i;
+                }
+                if(i<arr.length){
+                    return min_digit(i+1,temp);
+                }else{
+                    arr[temp] = -1
+                    return max;
+                }
+            }
+            min = min_digit(0,temp);
+            function unit_min(i) {
+                if (arr[i] != -1) {
+                    return arr[i]
+                }
+                else if(i<arr.length){
+                    return unit_min(i+1);
+                }
+            }
+
+            let unitMin = unit_min(0)
+            
+            let str = `${max}` + `${unitHour}` + `:` + `${min}` + `${unitMin}`
+            return str
+        }
+        console.log(getMaxtime(arr));
+    </script>
+</body>
+
+</html>

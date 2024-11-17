@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [{
+            "product_images_id": [1, 2, 3, 4, 5],
+            "product_images": ["paweferfaerfre.jpg", "wreareg.jpeg", "wreareg.jpeg", "wreareg.jpeg"],
+            "product_price": "20"
+        },
+
+        {
+            "product_images_id": [1, 2, 5],
+            "product_images": ["aweferfaerfre.jpg"],
+            "product_price": "30"
+        }
+        ];
+
+        let ans = [];
+        let data = [];
+        for (let e of arr) {
+            for (let key in e.product_images_id) {
+                let temp = {};
+                temp["product_images_id"] = e.product_images_id[key] 
+                if(e.product_images[key]){
+                    temp["product_images"] = e.product_images[key];
+                } 
+                data.push(temp)
+            }
+            let temp = {}
+            temp["product_price"] = e.product_price;
+            temp["data"] = data
+            data = [];
+            ans.push(temp)
+        }
+        console.log(JSON.stringify(ans,null,4));
+    </script>
+</body>
+
+</html>

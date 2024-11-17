@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [{
+            name: 'Jay',
+            rollNo: '30',
+            marks: {
+                math: 40,
+                science: 50,
+                english: 10,
+                hindi: 80,
+                gujarati: 90,
+                ss: 5
+            }
+        },
+        {
+            name: 'Kishan',
+            rollNo: '25',
+            marks: {
+                math: 45,
+                science: 39,
+                english: 41,
+                hindi: 33,
+                gujarati: 21,
+                ss: 12
+            }
+        }
+        ]
+        let studentResult = {};
+        let subjectResult = {};
+        let max = 0;
+        let sub = "";
+        let total = 0;
+        let count = 0;
+
+        for (let i of arr) {
+            count++;
+            let name = i.name
+            i.name = {
+                highest: {},
+                percentage: null
+            }
+            for (let [key, value] of Object.entries(i.marks)) {
+                total += value;
+                if (max < value) {
+                    max = value;
+                    sub = key
+                }
+                if (!subjectResult[key]) {
+                    subjectResult[key] = {
+                        lowest: {
+                            marks: value,
+                            student: name
+                        },
+                        average: value
+                    }
+                } else {
+                    let low = subjectResult[key].lowest.marks
+                    let stu = subjectResult[key].lowest.student
+                    subjectResult[key].average += value;
+                    if (low > value) {
+                        low = value
+                        stu = name
+                    }
+                    subjectResult[key].lowest.marks = low;
+                    subjectResult[key].lowest.student = stu;
+                }
+                if (count == arr.length) {
+                    subjectResult[key].average = +(subjectResult[key].average / (arr.length)).toFixed(2)
+                }
+            }
+            i.name.highest["marks"] = max;
+            i.name.highest["subject"] = sub;
+            i.name.percentage = +(total / 6).toFixed(2)
+            studentResult[name] = i.name;
+
+
+        }
+
+        // console.log(studentResult);
+        // console.log(subjectResult);
+    </script>
+</body>
+
+</html>

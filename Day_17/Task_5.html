@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
+        function colorChange(i, j, image, color, mark) {
+            image[i][j] = color;
+            if (i > 0) {
+                if (image[i - 1][j] === mark) {
+                    colorChange(i - 1, j, image, color, mark);
+                }
+            }
+            if (j > 0) {
+                if (image[i][j - 1] === mark) {
+                    colorChange(i, j - 1, image, color, mark)
+                }
+            }
+            if (j < image[0].length - 1) {
+                if (image[i][j + 1] === mark) {
+                    colorChange(i, j + 1, image, color, mark);
+                }
+            }
+            if (i < image.length - 1) {
+                if (image[i + 1][j] === mark) {
+                    colorChange(i + 1, j, image, color, mark);
+                }
+            }
+            return;
+        }
+
+        function floodFill(image, sr, sc, color) {
+            const mark = image[sr][sc];
+            console.log(mark)
+            colorChange(sr, sc, image, color, mark)
+            return image
+        };
+        console.log(floodFill(image, sr, sc, color) );
+    </script>
+</body>
+</html>

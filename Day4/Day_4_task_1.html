@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let arr1 = [0,1,2,3,4,5];
+        let arr2 = []
+        let n = parseInt(prompt("etner a number"));
+        
+
+        if(n>arr1.length || n<0){
+            alert("enter a valid number");
+        }else{
+            for(let i=0;i<arr1.length;i++){
+                let temp =(n+i)%arr1.length;
+                arr2[i] = arr1[temp];
+            }
+        }
+        
+        console.log(arr2);
+    </script>
+</body>
+</html>

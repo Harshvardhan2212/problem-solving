@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //stack
+        let stack = [];
+        let curLength = stack.length;
+        function push(e) {
+            stack[curLength] = e;
+            curLength++;
+        }
+        function pop() {
+            let ele = stack[curLength - 1]
+            stack.length = curLength - 1;
+            curLength = stack.length;
+            return ele;
+        }
+        //initial values
+        let str = "abcde";
+        let n  = 11;
+        let count = 1;
+        while(count != str.length+1){
+            let index;
+            index = n%count;
+            console.log(index,count);
+            // push(index);
+            push(index);
+            n = Math.floor(n/count);
+            console.log(n);   
+            count++          
+        }
+        console.log(stack);
+        let arr  = str.split("");
+        function removeElement(arr,n = pop()) {
+            console.log(arr);
+            let ans = arr[n];
+            for (let i = n; i < arr.length; i++) {
+                arr[i] = arr[i+1]           
+            }
+           arr.length = arr.length-1; 
+           return ans;
+        }
+        let final = ""
+        while(curLength>0){
+           final += removeElement(arr);
+        }
+        // let abc = "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz11223344556678009798"
+        console.log(final);
+    </script>
+</body>
+
+</html>

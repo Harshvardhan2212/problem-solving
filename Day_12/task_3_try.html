@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let name = {
+            0:"",
+            "00":"",
+            1: 'One',
+            2: 'Two',
+            3: 'Three',
+            4: 'Four',
+            5: 'Five',
+            6: 'Six',
+            7: 'Seven',
+            8: 'Eight',
+            9: 'Nine',
+            10: 'Ten',
+            11: 'Eleven',
+            12: 'Twelve',
+            13: 'Thirteen',
+            14: 'Fourteen',
+            15: 'Fifteen',
+            16: 'Sixteen',
+            17: 'Seventeen',
+            18: 'Eighteen',
+            19: 'Nineteen',
+            20: 'Twenty',
+            30: 'Thirty',
+            40: 'Forty',
+            50: 'Fifty',
+            60: 'Sixty',
+            70: 'Seventy',
+            80: 'Eighty',
+            90: 'Ninety',
+            1000: "Thousand",
+            100000: "Lakh",
+            10000000: "Crore"
+        }
+        let num = 10000999;
+        
+        let arr = [];
+        let cur_length = arr.length;
+        function push(e) {
+            arr[cur_length] = e;
+            cur_length++;
+        }
+        function pop() {
+            arr.length = cur_length - 1
+            cur_length = arr.length
+        }
+        let i=0
+        function digit_name(num,i){
+            let prev;
+            
+        while (i != 9) {
+            let temp = num % 10;
+            num = (num - temp) / 10
+            if(temp ==1 && i>2 && i%2 == 0){
+                pop()
+                push( name[temp+`${prev}`]+" "+name[10**(i-1)]) 
+                console.log(name[temp+`${prev}`]+" "+name[10**(i-1)]);
+            }else{
+                if(i===2){
+                push(name[temp]+" Hundred")
+            }else if(i === 1){
+                push(name[temp+"0"])
+                if(i===1 && temp ==1){
+                    pop()
+                    pop()
+                    push( name[temp+`${prev}`])
+
+                }
+            }else if(i==0){
+                prev = temp
+                push(name[temp])
+            }else{
+                
+                if(i%2 !== 0){
+                    prev = temp
+                    push(name[temp]+" "+name[10**(i)])
+                }else{
+                    push(name[temp+'0'])
+                }
+                if(i>5 && num>99){
+                   return digit_name(num,i=1)
+                }
+            }
+            }
+            i++;
+            }
+            
+        }
+        digit_name(num,i)
+        console.log(arr);
+        let ans = ""
+        for (let i = 0; i < arr.length; i++) {
+            ans += " "+ arr[arr.length - i - 1]
+        }
+        console.log(ans);
+    </script>
+</body>
+
+</html>

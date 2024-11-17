@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = parseInt(prompt("enter a number"))
+        for(let i=num;i>-num;i--){
+            let p;
+            (i<0)?(p=(-1*i)): p=i;
+            for(let j=num;j>p;j--){
+                document.write(" * ");
+            }
+            document.write(`<br/>`);
+
+        }
+        
+        let obj1 = {
+            name:"harsh"
+        }
+        console.log(typeof(obj1.name));
+        
+        
+    </script>
+
+</body>
+</html>

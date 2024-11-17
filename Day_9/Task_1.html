@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <script>
+        let num = [3,3000,304,50,90];
+        let str = "";
+        let min = [];
+        function my_sort(min){
+            let minimum =min[0];
+            for(let i=0;i<min.length;i++){
+                for(let j=i;j<min.length;j++){
+                    if(min[i]>min[j]){
+                        let temp = min[i];
+                        min[i] = min[j];
+                        min[j] = temp;
+                    }
+                }
+            }
+            return min;
+        }
+        function to_Number(min){
+            let ans="";
+            for(let i=0;i<min.length;i++){
+                ans+=min[i];
+            }
+            return ans;
+        }
+       
+        function min_number(number) {
+            let temp;
+            let min=[];
+            while (number>0) {
+                let i=1;
+                temp = number%(10**i);
+                number = (number-temp)/10**i;
+                min.push(temp);
+            }
+            return to_Number(my_sort(min));
+        }
+        
+        
+        for(let i=0;i<num.length;i++){
+            if(num[i]>9){
+                num[i] = min_number(num[i]);
+            }
+            str+=num[i];
+        }
+        console.log(str);
+    </script>
+</body>
+</html>

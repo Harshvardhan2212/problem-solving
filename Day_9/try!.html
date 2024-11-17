@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [3, 1, 4, 1];
+        let pos = [];
+        let ans =[];
+        for (let i = 0; i < arr.length; i++) {
+            let temp = []
+            for (let j = 0; j < arr.length; j++) {
+                if (j === (arr[i]-1)) {
+                    temp.push(1);
+                } else {
+                    temp.push(0);
+                }
+            }
+            pos.push(temp);
+        }
+        let row_count = 0;
+        let col_count = 0;
+        let row_temp = []
+        let col_temp = []
+        let count =0
+        for (let i = 0; i < pos.length; i++) {
+            
+            for (let j = 0; j < pos.length; j++) {
+                if(pos[i][j]){
+                    row_temp.push([i,j]);
+                    row_count++
+                }
+                if(pos[j][i]){
+                    col_temp.push([i,j])
+                    col_count++
+                }
+                if(i+j =co)
+            }
+            if(row_count<1){
+                row_temp = []
+            }
+            if(col_count<1){
+                col_temp = []
+            }
+            if(temp.length>1){
+                ans.push(temp);
+            }
+        }
+    </script>
+</body>
+</html>

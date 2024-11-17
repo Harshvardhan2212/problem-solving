@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        Object.objsize = function(Myobj) {
+            var osize = 0, key;
+            for (key in Myobj) {
+                if (Myobj.hasOwnProperty(key)) osize++;
+            }
+            return osize;
+        };
+
+        let arr= [1,2,3,4,5]
+        var student = { 
+            name : "David Rayy", 
+            sclass : "VI", 
+            rollno : 0 };
+            
+            var objsize = Object.objsize(student);
+            console.log('Size of the current object : '+objsize);
+
+        for (const key in student) {
+            console.log(key,":",student[key]);
+        }
+        for (const iterator of Object.keys(student)) {
+                console.log(iterator,":" ,student[iterator] );
+        }
+        // for(let k in arr){
+        //     console.log(arr[k]);
+        // }    
+        // for (let iterator of arr) {
+        //     console.log(iterator);
+        // }
+        </script>
+</body>
+</html>

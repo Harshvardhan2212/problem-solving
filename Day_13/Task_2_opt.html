@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str1 = "$$$%$$$^^tttdvd";
+        let ans = "";
+        function isPalindrome(str) {
+            if(str.length<3){
+                return false
+            }
+            let flag = true
+            for (let i = 0; i < Math.floor(str.length); i++) {
+                if (str[i] != str[str.length - i - 1]) {
+                    flag = false
+                }
+            }
+            return flag;
+        }
+        function getString(str1,count) {
+            let i = 0;
+            while (i < str1.length) {
+                let subStr = str1.substr(i, count)
+                if (isPalindrome(subStr) && ans.length<subStr.length && count<str1.length) {
+                    ans = subStr
+                    count++;
+                    return getString(str1,count);
+                }
+                i++;
+            }
+            if(count<str1.length){
+                count++;
+                return getString(str1,count);
+            }
+            return 0;
+        }
+        getString(str1,3);
+        console.log(ans);
+    </script>
+</body>
+</html>

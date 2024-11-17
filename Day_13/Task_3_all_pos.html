@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let matrix = [[2, 2, 4, 8],
+        [3, 5, 9, 1],
+        [1, 1, 1, 2]
+        ];
+        let i = 0;
+        let j = 0;
+        let ans = []
+        path = [];
+        let len = 0
+        function findPath(i, j, path, len) {
+            path.push(matrix[i][j]);
+            console.log(i, j, path);
+            if (i == matrix.length - 1 && j == matrix[0].length - 1) {
+                ans.push(path)
+                path = []
+            }
+            else {
+                len = len + 1
+                if (len > (matrix.length + matrix[0].length)) {
+                    return 0;
+                }
+                if (i == matrix.length - 1 && j < matrix[0].length) {
+                    findPath(i, j + 1, path, len);
+                } else if (j == matrix[0].length - 1 && i < matrix.length) {
+                    findPath(i + 1, j, path, len);
+                }
+                if (i < matrix.length-1 && j < matrix[0].length-1) {
+                    findPath(i + 1, j, path, len);
+                    findPath(i, j + 1, path, len);
+                }
+
+            }
+        }
+        console.log(findPath(i, j, path, len));
+        console.log(ans);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "vhfvhgftuvghhchghcghch";
+        k = "h"
+        function counting(str,k,count,i){
+            if(str[i] === k){
+                count++;
+            }
+            i++;
+            return (i<str.length)? counting(str,k,count,i): count;
+        }
+        let count = 0;
+        counting(str,k,count,0)
+    </script>
+</body>
+</html>

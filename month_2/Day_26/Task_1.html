@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="" id="counting" cols="30" rows="10"></textarea>
+    <div>Total Characters = <span id="charCount">0</span></div>
+    <div>Total words = <span id="wordCount">0</span></div>
+    <script>
+        let element = document.getElementById("counting")
+
+        element.addEventListener('keyup', function (e) {
+            let ctn = document.getElementById("charCount");
+            let str = element.value.trim();
+            let final = "";
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] == " " && str[i + 1] == " ") {
+                    continue;
+                } else {
+                    final += str[i];
+                }
+            }
+            let arr = final.split(" ");
+            let word = arr.join("");
+            ctn.textContent = word.length;
+
+            let wordCtn = document.getElementById("wordCount");
+
+            if (arr[arr.length - 1] == "") {
+                wordCtn.textContent = arr.length - 1
+            } else {
+                wordCtn.textContent = arr.length
+            }
+        })
+        element.addEventListener('change', function () {
+            console.log(element.value);
+        })
+    </script>
+</body>
+</html>

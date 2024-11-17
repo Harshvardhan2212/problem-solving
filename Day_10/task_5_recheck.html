@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let input = [
+  {
+    name: 'Jay',
+    rollNo: '30',
+    marks: { math: 40, science: 50, english: 10, hindi: 80, gujarati: 90, ss: 5 }
+  },
+  {
+    name: 'Kishan',
+    rollNo: '25',
+    marks: { math: 45, science: 39, english: 41, hindi: 33, gujarati: 21, ss: 12 }
+  }
+]
+let studentResult = {};
+        let subjectResult = {};
+
+        function minimum(input) {
+            let obj = {};
+            let min = 100;
+            let total = 0;
+            let sub = "math";
+            for (let key in input.marks) {
+                if (min > input.marks[key]) {
+                    min = input.marks[key];
+                    sub = key
+                }
+                total += input.marks[key];
+            }
+            obj["lowest"] = {
+                marks: min,
+                subject: sub
+            }
+            let per = (total / 6);
+            obj["percentage"] = +per.toFixed(2)
+            return obj
+        }
+        for (let i in input) {
+            studentResult[input[i].name] = minimum(input[i]);
+        }
+        for (let key in input[0].marks) {
+            let max = 0;
+            let name =input[0].name;
+            let total = 0;
+            for (let i = 0; i < input.length; i++) {
+                if (max < input[i].marks[key]) {
+                    max = input[i].marks[key];
+                    name = input[i].name;
+                }
+                total += input[i].marks[key]
+            }
+            
+            let obj1 = {
+                marks: max,
+                student: name
+            }
+            let avg = total/input.length
+            subjectResult[key] = {
+                "highest" : obj1,
+                "average" : +avg.toFixed(2)
+            };
+        }
+    const result = {
+        studentResult: studentResult, 
+        subjectResult:subjectResult
+    }
+    console.log(result);
+    </script>
+</body>
+</html>

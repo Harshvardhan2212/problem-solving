@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .off {
+            border: 1px solid black;
+            height: 300px;
+            width: 176px;
+            background-image: url(JS_Pro1bulb_off.png);
+            background-size: contain;
+        }
+
+        .on {
+            border: 1px solid black;
+            height: 300px;
+            width: 176px;
+            background-image: url(JS_Pro1bulb_on.png);
+            background-size: contain;
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+        <div class="off"></div>
+        <div class="off"></div>
+        <div class="off"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("div").on('click', function () {
+                if (this.className == "off") {
+                    $("div").removeAttr("class");
+                    $("div").addClass("off");
+                    $(this).removeAttr("class");
+                    $(this).addClass("on");
+                } else {
+                    $(this).removeAttr("class");
+                    $(this).addClass("off");
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

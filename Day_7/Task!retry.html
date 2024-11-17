@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "gyyteetywywivr";
+        let visited = {};
+        let str1 = str
+        let ans ="";
+        function ansfun(str1,ans){
+        for(let i=0;i<str1.length;i++){
+            if(str1[i] == str1[i+1] && !(visited[str1[i]])){
+                visited[str1[i]] = true;
+                ans = ans+str1[i];
+                str1 = str1.substring(0,i)+str1.substring(i+2);
+                console.log(str1);
+            }
+            return ansfun(str1,ans);
+        }
+    }
+        console.log(ansfun(str1));
+        console.log(ans);
+
+    </script>
+</body>
+</html>

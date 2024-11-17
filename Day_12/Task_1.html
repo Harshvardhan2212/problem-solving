@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [9,8,8,1,2,3];
+        let m = 1;
+        let subarr_l = 1;
+        let maximum =0;
+        function check_double(subarr,m){
+            for (let i = 0; i < m; i++) {
+                for (let j = i+1; j < m; j++) {
+                    if(subarr[i] === subarr[j]){
+                        return false
+                    }
+                }
+            }
+            return true
+        }
+        for (let i = 0; i < arr.length-subarr_l+1; i++) {
+            let max = 0
+            let subarr = []
+            for (let j = i; j < i+subarr_l; j++) {
+                subarr.push(arr[j])
+                max += arr[j];
+            }
+            console.log(check_double(subarr,m));
+            if(maximum<max && check_double(subarr,m)){
+                maximum = max
+            }  
+        }
+        console.log(maximum);
+    </script>
+</body>
+
+</html>

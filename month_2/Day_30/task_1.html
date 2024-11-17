@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <select name="" id="country">
+        <option value="" style="display: none;">select</option>
+    </select>
+
+    <select name="" id="state">
+        <option value="" style="display: none;">select</option>
+    </select>
+
+    <select name="" id="city">
+        <option value="" style="display: none;">select</option>
+    </select>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        let countries = [
+            {
+                "value": "India",
+                "states": [
+                    {
+                        "value": "Gujarat",
+                        "cities": [
+                            {
+                                "value": "Ahmedabad"
+                            }, {
+                                "value": "Porbandar"
+                            }, {
+                                "value": "Jamnagar"
+                            }
+                        ]
+                    }, {
+                        "value": "Maharashtra",
+                        "cities": [
+                            {
+                                "value": "Mumbai"
+                            }, {
+                                "value": "Pune"
+                            }, {
+                                "value": "Nasik"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "USA",
+                "states": [
+                    {
+                        "value": "California",
+                        "cities": [
+                            {
+                                "value": "Bakersfield"
+                            }, {
+                                "value": "Calexico"
+                            }, {
+                                "value": "Chico"
+                            }
+                        ]
+                    }, {
+                        "value": "Texas",
+                        "cities": [
+                            {
+                                "value": "Austin"
+                            }, {
+                                "value": "Canyon"
+                            }, {
+                                "value": "Denison"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+
+        $('#country').html(countries.forEach((e) => {
+            $('#country').append($('<option>').text(`${e.value}`).val(`${e.value}`))
+        }));
+        let index;
+        $('#country').on('change', function () {
+            let country = $(this).val();
+            index = countries.findIndex((e) => e.value == country)
+            let states = countries[index].states
+            $('#state').empty()
+            $('#state').append($('<option>').text('select'))
+            $('#city').empty()
+            $('#city').append($('<option>').text('select'))
+            $('#state').html(states.forEach((e) => {
+                $('#state').append($('<option>').text(`${e.value}`).val(`${e.value}`))
+            })
+            )
+        });
+        $('#state').on('change', function () {
+            let state = $(this).val();
+            let country = $('#country').val();
+            let stateIndex = countries[index].states.findIndex((e) =>e.value == state);
+            let city = countries[index].states[stateIndex].cities;
+            $('#city').empty()
+            $('#city').append($('<option>').text('select'))
+            $('#city').html(city.forEach((e) => {
+                $('#city').append($('<option>').text(`${e.value}`).val(`${e.value}`))
+            })
+            )
+        })
+    </script>
+</body>
+
+</html>            

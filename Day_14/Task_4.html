@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        nums = [1, 0, 1, 1], indexDiff = 1, valueDiff = 2    //true
+        // nums = [1, 2,3,1,2,3], indexDiff= 2, valueDiff= 0      //false
+        // nums =  [1,1,1,1,1], indexDiff = 2, valueDiff = 0     //true 
+        // nums =[1,1,1,1,1], indexDiff= 4, valueDiff= 0        //true
+        // nums = [1,5,9,15], indexDiff = 1, valueDiff= 4      //true
+        // nums =  [1], indexDiff= 0, valueDiff= 0             //false
+        // nums =  [10,20,30,40], indexDiff = 2, valueDiff = 5  //false
+        // nums = [5,10,15,20], indexDiff = 3, valueDiff = 10    //true
+        // nums = [700,710,720,730], indexDiff= 3, valueDiff= 12  //true 
+        // nums = [1500, 1505, 1510, 1515], indexDiff= 2, valueDiff= 4  //false
+        let flag = false;
+        //  for (let i = 0; i < (nums.length-indexDiff); i++) {
+        //     for (let j = i+1; j <= i+indexDiff; j++) {
+        //         if(Math.abs(nums[i] - nums[j]) <= valueDiff){
+        //             flag = true;
+        //         }                
+        //     }            
+        //  }
+        function checkThis(i, j, indexDiff, valueDiff) {
+            if (i === nums.length - indexDiff - 1 && j == i + indexDiff) {
+                return;
+            }
+            if (Math.abs(nums[i] - nums[j]) <= valueDiff) {
+                flag = true;
+            }
+            if(i < (nums.length-indexDiff) && j <= i+indexDiff){
+                j++;
+                 checkThis
+            }
+        }
+        console.log(flag);
+        let ans = [true, false, true, true, true, false, false, true, true, false];
+        console.log(ans);
+    </script>
+</body>
+
+</html>

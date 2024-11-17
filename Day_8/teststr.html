@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = "Implementing Message Encryption with Character Reversal"
+        let str1 = "";
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] !== " ") {
+                str1 += str[i];
+            }
+        }
+        console.log(str1);
+        console.log(str1.length);
+        n = str1.length
+        let min = n;
+        let count;
+        for (let i = 0; i < str1.length; i++) {
+            let flag =false;
+            if (i * i >= n) {
+                for (let j = i; j >= 0; j--) {
+                    console.log(i, j);
+                    let min_in = n - (i * j);
+                    if (min > min_in) {
+                        count = i;
+                        min = min_in
+                    }else{
+                        flag =true;
+                        break
+                    }
+                }
+            }
+            if(flag){
+                break;
+            }
+        }
+        console.log(count);
+    </script>
+</body>
+
+</html>

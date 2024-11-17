@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let str1 = "qwertyuiop"
+        let str2 = "asdfghjkl"
+        let str3 = "zxcvbnm"
+        let arr = ["Horse","Elephant","GJD","Giraffe","Lion"];
+        let ans = []
+        function check(e,str) {
+            let count =0;
+            for (let k = 0; k < str1.length; k++) {
+                    if(str1[k] == e){
+                        count++;
+                    }                    
+                }
+                return count;
+        }
+        for (let i = 0; i < arr.length; i++) {
+            let count=0,count_1=0,count_2 =0;
+            let element = arr[i].toLowerCase();
+            for (let j = 0; j < arr[i].length; j++) {
+               count += check(element[j],str1);
+               count_1 += check(element[j],str2);
+               count_2 += check(element[j],str3)                 
+            }
+            if(count !== element.length && count_1 !== element.length && count_2 !== element.length){
+                ans.push(arr[i]);
+            }
+        }
+        console.log(ans);
+    </script>
+</body>
+</html>

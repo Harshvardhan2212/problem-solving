@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [
+            [12, 23, 25, 34, 35],
+            [14, 21, 43, 44, 45],
+            [15, 31, 33, 51, 52],
+            [24, 32, 41, 53, 55],
+            [13, 22, 45, 54, 55]
+        ]
+        let ans = [];
+        let flag = true;
+        let i = 1,
+            j = 1;
+        while (flag) {
+            let temp = arr[i - 1][j - 1]
+            ans.push(arr[i - 1][j - 1]);
+            j = temp % 10;
+            i = (temp - j) / 10;
+            if (ans[ans.length - 1] == arr[i - 1][j - 1]) {
+                ans.push(arr[i - 1][j - 1]);
+                flag = false;
+            }
+        }
+
+        console.log(ans);
+    </script>
+</body>
+
+</html>

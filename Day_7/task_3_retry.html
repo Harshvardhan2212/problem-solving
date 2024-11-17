@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = "leetcode";
+        let substring = "leeto";
+        if(substring !== undefined){
+            let ans="";
+            for(let i=0; i<str.length; ){
+                let duplicate =""; 
+                // let duplicate = str.substring(i, i+substring.length);
+                for(let j=i; j<(i+substring.length);j++){
+                    duplicate += str.charAt(j);
+                }
+                if(duplicate !== substring){
+                    ans += str.charAt(i);
+                    i++;
+                }else{
+                    i+=substring.length;
+                }
+            }
+            if(ans === str) 
+                console.log(-1);
+            const a = ans.length !== 0 ? ans : true;
+            console.log(a);
+        }
+        console.log(-1);
+    </script>
+</body>
+
+</html>

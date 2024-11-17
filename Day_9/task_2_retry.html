@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let arr = [3, 1, 4, 1];
+        let ans = [];
+        let final = [];
+        let obj = {};
+        for (let i = 0; i < arr.length; i++) {
+            let temp = [];
+            temp.push(i+1);
+            temp.push(arr[i]);
+            ans.push(temp);
+        }
+       
+        
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i+1; j < arr.length; j++) {
+                
+                    if(ans[i][1] === ans[j][1] && !final.includes(ans[i]) && !final.includes(ans[j])){
+                    final.push(ans[i]);
+                    final.push(ans[j]);
+                }
+                if(ans[i][0] === ans[j][0]&& !final.includes(ans[i]) && !final.includes(ans[j])){
+                    
+                    final.push(ans[i]);
+                    final.push(ans[j]);
+                }
+                if(Math.abs(ans[i][0]-ans[i][1]) === Math.abs(ans[j][0]-ans[j][1]) && !final.includes(ans[i]) && !final.includes(ans[j])){
+                    
+                    final.push(ans[i]);
+                    final.push(ans[j]);
+                }
+                
+                
+            }
+        }
+        
+        console.log(final);
+    </script>
+</body>
+</html>

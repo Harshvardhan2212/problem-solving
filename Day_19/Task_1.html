@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let words = ["SEND", "MORE"], result = "MONEY";
+        let obj = {};
+        
+        function Itarate(val) {
+            for (let i = 0; i < val.length; i++) {
+                obj[val[i]] = -1;
+            }
+        }
+        let number = [];
+        function makeNumber(word) {
+            let num = "";
+            for (let i = 0; i < word.length; i++) {
+                num += obj[word[word.length - i - 1]]
+            }
+            number.push(+num)
+        }
+        for (let val of words) {
+            Itarate(val);
+        }
+        Itarate(result);
+        let str = ""
+        let numberStr = "0123456789"
+        for (let key in obj) {
+            str += key;
+        }
+
+        function swap(strArr, i, j) {
+          const temp = strArr[i];
+          strArr[i] = strArr[j];
+          strArr[j] = temp;
+        }
+
+
+        function factorial(l){
+            if(l == 1){
+                return l
+            }
+            return l*factorial(l-1);
+        }
+        console.log(factorial(5));
+        let num = factorial(str.length);
+
+
+        function permute(str, n = str.length, strArr = str.split('')) {
+          if (n === 1) {
+            num--;
+            if(crossCheck(strArr.join(''),0,obj) || num == 0){
+                return obj;
+            }
+
+          } else {
+            for (let i = 0; i < n; i++) {
+              permute(str, n - 1, strArr);
+              if (n % 2 === 0) {
+                swap(strArr, i, n - 1);
+              } else {
+                swap(strArr, 0, n - 1);
+              }
+            }
+          }
+        }
+
+        function crossCheck(str,i,obj) {
+            let count = 0;
+            let j = i
+            while (count !== 9) {
+                console.log(str[count]);
+                obj[str[count]] = numberStr[j%9];
+                count++;
+                j++;
+            }
+            let total = 0;
+            for (let key of words) {
+                total += makeNumber(key);
+            }
+            if(total === makeNumber(result)){
+                return true;
+            }
+            console.log(obj);
+            i++
+            if(i<9){
+                crossCheck(str,i,obj);
+            }
+            return false
+        }
+        console.log(permute(str))
+        // console.log(crossCheck(str,0,obj));
+
+    </script>
+</body>
+
+</html>

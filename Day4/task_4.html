@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        matrix = [
+    [1,10,4,2],
+    [9,13,8,7],
+    [15,16,17,12]
+        ]
+        function getLuckyNumber(matrix){
+            let arr =[];
+            let arr1 =[];
+
+        let n = matrix.length;
+        let m = matrix[0].length;
+        
+        
+        for(let i=0;i<n;i++){
+            let max = matrix[i][0];
+            for(let j=0;j<m;j++){
+                if(max<matrix[i][j]){
+                    max = matrix[i][j];
+                    
+                }
+            }
+            arr.push(max)
+        }
+       for(let i=0;i<m;i++){
+        let min = matrix[0][i];
+        for(let j=0;j<n;j++){
+            if(min>matrix[j][i]){
+                min = matrix[j][i]
+            }
+        }
+        arr.push(min)
+       }
+    }
+    for(let i=0;i<arr.length;i++){
+         arr[i] === arr2[j]
+         return arr[i];
+    }
+        console.log(getLuckyNumber(matrix));
+    </script>
+</body>
+</html>

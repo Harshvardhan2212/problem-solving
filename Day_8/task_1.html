@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "wcg";
+        let str1="";
+        let arr = [];
+        for(let i=0;i<str.length;i++){
+            if(str[i] !== " "){
+                str1 += str[i];
+            }
+        }
+        n = str1.length 
+        let min = n;
+        let count;
+        for (let i = 0; i < str1.length; i++) {
+            if(i*i>=n){
+                let min_in=(i*(i-1))-n;
+                if(min>min_in){
+                    count = i;
+                    break
+                }
+            }         
+        }
+        // for (let i = 0; i < str1.length; i++) {
+        //     let flag =false;
+        //     if (i * i >= n) {
+        //         for (let j = i; j >= 0; j--) {
+        //             let min_in = n - (i * j);
+        //             if (min > min_in) {
+        //                 count = i;
+        //                 min = min_in
+        //             }else{
+        //                 flag =true;
+        //                 break
+        //             }
+        //         }
+        //     }
+        //     if(flag){
+        //         break;
+        //     }
+        // }
+        console.log(count);
+       for(let i=0;i<n;i){
+        let ans=""
+        let re_ans=""
+        for(let j=0;j<count;j++){
+            if(i===n){
+                break;
+            }
+            ans+=str1[i]
+            i++;
+        }
+        for(let k=ans.length-1;k>=0;k--){
+            re_ans+=ans[k];
+        }
+            arr.push(re_ans)
+       }
+        console.log(arr);
+    </script>
+</body>
+</html>

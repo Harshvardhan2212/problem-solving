@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nums = [1,10,3,4,19];
+        let ans = 0;
+        let arr = []
+        let i=0;
+        while(i < nums.length) {
+            let j = i + 1
+            while(j < nums.length) {
+                let total = 0;
+                let k = j + 1
+                while(k < nums.length) {
+                    let temp = [];
+                    temp.push(nums[i])
+                    temp.push(nums[j])
+                    temp.push(nums[k])
+                    total = (nums[i] - nums[j]) * nums[k];
+                    if (total > ans) {
+                        arr = []
+                        arr = temp
+                        ans = total;
+                    }
+                    k++
+                }
+                j++
+            }
+            i++;
+        }
+        console.log(ans);
+        console.log(arr);
+        if (arr[0] < 0 && arr[1] < 0 && arr[2] < 0) {
+            console.log(0);
+        } else {
+            console.log(ans);
+        }
+    </script>
+</body>
+</html>

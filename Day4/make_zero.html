@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+        let arr1 = []
+        for(let i =0; i<arr.length;i++){
+        for(let j =0; j<arr[0].length;j++){
+            if(arr[i][j]==0){
+                arr1.push(i);
+                arr1.push(j);
+            }
+        }  
+    }
+    console.log(arr1);
+    for(let i=0;i<arr.length;i++){
+        let count =0;
+        for(let j=0;j<arr[0].length;j++){
+            if(i==arr1[count]){
+                arr[i][j] = 0;
+            }   
+            if(j==arr1[count+1]){
+                arr[i][j] = 0;
+            }
+        }
+        
+    }
+    // let strr = 'adjlkchasjncdn';
+    // let arrr = strr.split('');
+    // console.log(arrr);
+    console.log(arr);
+    </script>
+</body>
+</html>

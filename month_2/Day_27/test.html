@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Remove specific divisible
+        element using Javascript
+    </title>
+</head>
+
+<body style="text-align: center;">
+    <h1 style="color: green;">
+        GeekforGeeks
+    </h1>
+    <div id="gfg_up" style="font-size: 15px; 
+					font-weight: bold;">
+        A Computer Science Portal for Geeks
+    </div>
+    <br />
+    <button onclick="GFG_click()">
+        click to remove
+    </button>
+    <hr />
+    <div id="gfg_down" style="font-size: 15px; 
+					font-weight: bold;">
+        A Computer Science Portal for Geeks
+    </div>
+
+    <script type="text/javascript">
+        function GFG_click() {
+            let gfg_down =
+                document.getElementById("gfg_down");
+            gfg_down.parentNode.removeChild(gfg_down);
+        }
+    </script>
+
+</body>
+    
+    <!-- colorChange.addeventleister("change",function (){
+        getElementByTagename("div").className = color.value
+    }) -->
+</html>
